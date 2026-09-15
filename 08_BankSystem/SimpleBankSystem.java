@@ -87,16 +87,9 @@ public class SimpleBankSystem {
             return;
         }
         System.out.println("\n--- All Accounts ---");
-        System.out.println("┌──────────┬─────────────────┬─────────────┐");
-        System.out.println("│ Acc No   │ Holder Name     │ Balance     │");
-        System.out.println("├──────────┼─────────────────┼─────────────┤");
         for (BankAccount account : accounts) {
-            System.out.printf("│ %-8s │ %-15s │ ₹ %-9.2f │\n", 
-                            account.getAccountNumber(), 
-                            account.getHolderName(), 
-                            account.getBalance());
+            System.out.println(account.getAccountNumber() + " - " + account.getHolderName() + ": ₹" + String.format("%.2f", account.getBalance()));
         }
-        System.out.println("└──────────┴─────────────────┴─────────────┘");
     }
     static void depositMoney() {
         System.out.print("\nEnter account number: ");
@@ -196,4 +189,9 @@ class BankAccount {
         }
         return false;
     }
-}
+}
+
+
+
+
+

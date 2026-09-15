@@ -4,9 +4,7 @@ public class TodoList {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Task> tasks = new ArrayList<>();
     public static void main(String[] args) {
-        System.out.println("╔═════════════════════════════════════╗");
-        System.out.println("║   To-Do List Application            ║");
-        System.out.println("╚═════════════════════════════════════╝\n");
+        System.out.println("To-Do List Application\n");
         boolean continueProgram = true;
         while(continueProgram) {
             displayMenu();
@@ -72,16 +70,11 @@ public class TodoList {
             return;
         }
         System.out.println("\n--- All Tasks ---");
-        System.out.println("┌─────┬─────────────────────────────┬──────────┬──────────┐");
-        System.out.println("│ ID  │ Task                        │ Priority │ Status   │");
-        System.out.println("├─────┼─────────────────────────────┼──────────┼──────────┤");
         for (int i = 0; i < tasks.size(); i++) {
             Task task = tasks.get(i);
-            String status = task.isCompleted() ? "✓ Done" : "○ Pending";
-            System.out.printf("│ %-3d │ %-27s │ %-8s │ %-8s │\n", 
-                            (i + 1), task.getDescription(), task.getPriority(), status);
+            String status = task.isCompleted() ? "Done" : "Pending";
+            System.out.println((i + 1) + ". " + task.getDescription() + " (" + task.getPriority() + ") - " + status);
         }
-        System.out.println("└─────┴─────────────────────────────┴──────────┴──────────┘");
     }
     static void markTaskComplete() {
         if (tasks.isEmpty()) {
@@ -167,4 +160,9 @@ class Task {
     public String getPriority() { return priority; }
     public boolean isCompleted() { return completed; }
     public void setCompleted(boolean completed) { this.completed = completed; }
-}
+}
+
+
+
+
+

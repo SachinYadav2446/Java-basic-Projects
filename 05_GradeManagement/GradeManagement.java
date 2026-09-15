@@ -66,13 +66,9 @@ public class GradeManagement {
     }
     static void displayAllStudents(String[] names, double[] grades) {
         System.out.println("\n--- Student Report ---");
-        System.out.println("┌─────────────────┬────────┐");
-        System.out.println("│ Name            │ Grade  │");
-        System.out.println("├─────────────────┼────────┤");
         for (int i = 0; i < names.length; i++) {
-            System.out.printf("│ %-15s │ %6.2f │\n", names[i], grades[i]);
+            System.out.println(names[i] + ": " + String.format("%.2f", grades[i]));
         }
-        System.out.println("└─────────────────┴────────┘");
     }
     static void displayStatistics(double[] grades) {
         double average = calculateAverage(grades);
@@ -133,4 +129,8 @@ public class GradeManagement {
         }
         return lowest;
     }
-}
+}
+
+
+
+

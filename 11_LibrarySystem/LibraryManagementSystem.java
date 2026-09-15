@@ -144,19 +144,10 @@ public class LibraryManagementSystem {
             return;
         }
         System.out.println("\n--- Library Catalog ---");
-        System.out.println("┌─────┬──────────────────────┬─────────────────┬──────┬─────────────┐");
-        System.out.println("│ ID  │ Title                │ Author          │ Year │ Type        │");
-        System.out.println("├─────┼──────────────────────┼─────────────────┼──────┼─────────────┤");
         for (Book book : library) {
             String type = book.getClass().getSimpleName();
-            System.out.printf("│ %-3s │ %-20s │ %-15s │ %-4d │ %-11s │\n",
-                            book.getBookId(),
-                            book.getTitle(),
-                            book.getAuthor(),
-                            book.getYear(),
-                            type);
+            System.out.println(book.getBookId() + " - " + book.getTitle() + " by " + book.getAuthor() + " (" + book.getYear() + ") - " + type);
         }
-        System.out.println("└─────┴──────────────────────┴─────────────────┴──────┴─────────────┘");
     }
     static void borrowBook() {
         System.out.print("\nEnter member ID: ");
@@ -375,4 +366,9 @@ class Member {
             System.out.println("  • " + book.getTitle() + " by " + book.getAuthor());
         }
     }
-}
+}
+
+
+
+
+

@@ -98,17 +98,9 @@ public class BankAccountManager {
             return;
         }
         System.out.println("\n--- All Accounts ---");
-        System.out.println("┌──────────┬─────────────────┬────────────┬──────────┐");
-        System.out.println("│ Acc No   │ Holder          │ Balance    │ Type     │");
-        System.out.println("├──────────┼─────────────────┼────────────┼──────────┤");
         for (BankAccountOOP account : accounts) {
-            System.out.printf("│ %-8s │ %-15s │ ₹ %-8.2f │ %-8s │\n",
-                            account.getAccountNumber(),
-                            account.getHolderName(),
-                            account.getBalance(),
-                            account.getAccountType());
+            System.out.println(account.getAccountNumber() + " - " + account.getHolderName() + " (" + account.getAccountType() + "): ₹" + String.format("%.2f", account.getBalance()));
         }
-        System.out.println("└──────────┴─────────────────┴────────────┴──────────┘");
     }
     static void performTransaction() {
         System.out.print("\nEnter account number: ");
@@ -287,4 +279,9 @@ class Transaction {
     public String getType() { return type; }
     public double getAmount() { return amount; }
     public long getTimestamp() { return timestamp; }
-}
+}
+
+
+
+
+

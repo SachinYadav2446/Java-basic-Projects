@@ -8,10 +8,7 @@ public class ECommerceSystem {
     static ShoppingCart cart = new ShoppingCart();
     static OrderHistory orderHistory = new OrderHistory();
     public static void main(String[] args) {
-        System.out.println("╔═════════════════════════════════════╗");
-        System.out.println("║   E-Commerce Product Catalog        ║");
-        System.out.println("║   (Advanced OOP)                    ║");
-        System.out.println("╚═════════════════════════════════════╝\n");
+        System.out.println("E-Commerce Product Catalog (Advanced OOP)\n");
         // Initialize catalog
         initializeCatalog();
         boolean continueProgram = true;
@@ -52,16 +49,13 @@ public class ECommerceSystem {
         scanner.close();
     }
     static void displayMainMenu() {
-        System.out.println("\n╔═══════════════════════════════════╗");
-        System.out.println("║      E-Commerce System            ║");
-        System.out.println("╠═══════════════════════════════════╣");
-        System.out.println("║  1. Browse Catalog                ║");
-        System.out.println("║  2. Search Products               ║");
-        System.out.println("║  3. Manage Shopping Cart          ║");
-        System.out.println("║  4. Checkout                      ║");
-        System.out.println("║  5. View Order History            ║");
-        System.out.println("║  6. Exit                          ║");
-        System.out.println("╚═══════════════════════════════════╝");
+        System.out.println("\nE-Commerce System");
+        System.out.println("1. Browse Catalog");
+        System.out.println("2. Search Products");
+        System.out.println("3. Manage Shopping Cart");
+        System.out.println("4. Checkout");
+        System.out.println("5. View Order History");
+        System.out.println("6. Exit");
     }
     static void initializeCatalog() {
         catalog.addProduct(new Product("P001", "Java Programming Book", "Education", 499.99, 15));
@@ -283,18 +277,9 @@ class Catalog {
         return results;
     }
     public void displayAllProducts() {
-        System.out.println("┌─────┬────────────────────────┬──────────────┬───────────┬────────┐");
-        System.out.println("│ ID  │ Product Name           │ Category     │ Price     │ Stock  │");
-        System.out.println("├─────┼────────────────────────┼──────────────┼───────────┼────────┤");
         for (Product product : products) {
-            System.out.printf("│ %-3s │ %-22s │ %-12s │ ₹ %-7.2f │ %-6d │\n",
-                            product.getProductId(),
-                            product.getProductName(),
-                            product.getCategory(),
-                            product.getPrice(),
-                            product.getStock());
+            System.out.println(product.getProductId() + " - " + product.getProductName() + " (" + product.getCategory() + "): ₹" + String.format("%.2f", product.getPrice()) + " - Stock: " + product.getStock());
         }
-        System.out.println("└─────┴────────────────────────┴──────────────┴───────────┴────────┘");
     }
 }
 // ==================== Cart Item Class ====================
@@ -360,23 +345,14 @@ class ShoppingCart {
     }
     public void displayCart() {
         if (items.isEmpty()) {
-            System.out.println("📭 Cart is empty");
+            System.out.println("Cart is empty");
             return;
         }
-        System.out.println("┌─────┬──────────────────────┬──────────┬──────────┐");
-        System.out.println("│ ID  │ Product              │ Qty      │ Total    │");
-        System.out.println("├─────┼──────────────────────┼──────────┼──────────┤");
+        System.out.println("Cart Items:");
         for (CartItem item : items) {
-            System.out.printf("│ %-3s │ %-20s │ %-8d │ ₹ %-6.2f │\n",
-                            item.getProduct().getProductId(),
-                            item.getProduct().getProductName(),
-                            item.getQuantity(),
-                            item.getTotal());
+            System.out.println("  " + item.getProduct().getProductId() + " - " + item.getProduct().getProductName() + " x " + item.getQuantity() + " = ₹" + String.format("%.2f", item.getTotal()));
         }
-        System.out.println("├─────┴──────────────────────┼──────────┼──────────┤");
-        System.out.printf("│ Total Items: %-13d │          │ ₹ %-6.2f │\n",
-                        items.size(), getCartTotal());
-        System.out.println("└────────────────────────────┴──────────┴──────────┘");
+        System.out.println("Total: ₹" + String.format("%.2f", getCartTotal()));
     }
     public ArrayList<CartItem> getItems() {
         return new ArrayList<>(items);
@@ -434,19 +410,17 @@ class OrderHistory {
     }
     public void displayOrderHistory() {
         if (orders.isEmpty()) {
-            System.out.println("\n📭 No orders placed yet!");
+            System.out.println("\nNo orders placed yet!");
             return;
         }
         System.out.println("\n--- Order History ---");
-        System.out.println("┌──────────┬──────────────────┬────────────┐");
-        System.out.println("│ Order ID │ Customer         │ Amount     │");
-        System.out.println("├──────────┼──────────────────┼────────────┤");
         for (Order order : orders) {
-            System.out.printf("│ %-8d │ %-16s │ ₹ %-8.2f │\n",
-                            order.getOrderId(),
-                            order.getCustomerName(),
-                            order.getTotalAmount());
+            System.out.println("Order #" + order.getOrderId() + " - " + order.getCustomerName() + ": ₹" + String.format("%.2f", order.getTotalAmount()));
         }
-        System.out.println("└──────────┴──────────────────┴────────────┘");
     }
-}
+}
+
+
+
+
+
